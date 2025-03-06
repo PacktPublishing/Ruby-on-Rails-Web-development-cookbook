@@ -11,7 +11,6 @@ run 'bundle install'
 rails_command "tailwindcss:install" 
 
 generate "rails_admin:install", "--namespace=admin"
-generate "react_on_rails:install", "--ignore-warnings"
 
 # Run bundle install after gem additions
 
