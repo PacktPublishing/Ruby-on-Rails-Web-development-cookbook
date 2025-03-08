@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Order Confirmation</h1>
+    
+    <p>Dear <%= @customer.name %>,</p>
+    
+    <p>Thank you for your order! Here are your order details:</p>
+    
+    <ul>
+      <li>Order ID: <%= @order.id %></li>
+      <li>Total Amount: <%= number_to_currency(@order.total_price) %></li>
+      <li>Status: <%= @order.status.titleize %></li>
+    </ul>
+    
+    <p>We'll notify you when your order ships.</p>
+    
+    <p>Best regards,<br>Shop Smart Team</p>
+  </body>
+</html>

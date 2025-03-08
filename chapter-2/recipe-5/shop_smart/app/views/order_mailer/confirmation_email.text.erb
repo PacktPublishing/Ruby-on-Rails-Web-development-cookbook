@@ -1,0 +1,14 @@
+Order Confirmation
+
+Dear <%= @customer.name %>,
+
+Thank you for your order! Here are your order details:
+
+Order ID: <%= @order.id %>
+Total Amount: <%= number_to_currency(@order.total_price) %>
+Status: <%= @order.status.titleize %>
+
+We'll notify you when your order ships.
+
+Best regards,
+Shop Smart Team
