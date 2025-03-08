@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_08_052500) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_08_053043) do
   create_table "users", force: :cascade do |t|
-    t.text "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
   end
 end
