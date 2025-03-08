@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_08_054441) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_08_055221) do
   create_table "assignments", force: :cascade do |t|
     t.integer "employee_id", null: false
     t.integer "project_id", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_08_054441) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_assignments_on_employee_id"
+    t.index ["project_id", "employee_id"], name: "index_assignments_on_project_id_and_employee_id", unique: true
     t.index ["project_id"], name: "index_assignments_on_project_id"
   end
 
@@ -59,4 +60,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_08_054441) do
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
+
+  add_foreign_key "assignments", "employees"
+  add_foreign_key "assignments", "projects", on_delete: :cascade
+  add_foreign_key "support_tickets", "employees"
+  add_foreign_key "tasks", "projects", on_delete: :cascade
 end
