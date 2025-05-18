@@ -1,0 +1,51 @@
+<div class="flex items-center justify-center m-8 p-4">
+  <div
+    class="bg-white rounded-xl shadow-lg w-full max-w-4xl flex overflow-hidden"
+  >
+    <aside class="w-1/4 border-r border-gray-200 p-6">
+      <h2 class="text-xl font-bold mb-4">Projects</h2>
+      <ul>
+        <% @projects.each do |proj| %>
+          <li class="mb-2">
+            <%= link_to proj.name,
+            project_path(proj),
+            class: "text-gray-800 hover:text-blue-500 #{"font-bold" if proj == @project}" %>
+          </li>
+        <% end %>
+      </ul>
+      <div class="mt-4">
+        <%= link_to "+ New Project", new_project_path, class: "text-blue-500" %>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-6 overflow-auto">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-bold">To-Do List</h2>
+        <%= form_with model: [@project, Todo.new], local: true, class: "flex" do |f| %>
+          <%= f.text_field :content,
+                       placeholder: "New Task",
+                       class: "border rounded px-2 py-1 mr-2 flex-1" %>
+          <%= f.submit "Add Task", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+        <% end %>
+      </div>
+      <ul class="space-y-2">
+        <% @project.todos.each do |todo| %>
+          <li class="bg-white border border-gray-200 rounded-lg p-4 flex items-center">
+            <%= form_with model: [@project, todo], local: true do |f| %>
+              <%= f.check_box :completed,
+                          {
+                            checked: todo.completed,
+                            onchange: "this.form.submit()",
+                            class:
+                              "form-checkbox h-5 w-5 text-blue-600 rounded-full border-gray-300",
+                          } %>
+            <% end %>
+            <span class="ml-4 <%= 'line-through text-gray-500' if todo.completed %>">
+              <%= todo.content %>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    </main>
+  </div>
+</div>

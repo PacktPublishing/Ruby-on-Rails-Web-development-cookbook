@@ -1,0 +1,18 @@
+<h1 class="text-2xl font-bold mb-4">Edit Todo</h1>
+<%= link_to 'Back to Todos', admin_todos_path, class: 'text-sm text-gray-500 hover:underline mb-4 inline-block' %>
+
+<%= form_with model: [:admin, @todo], local: true do |form| %>
+  <div class="mb-4">
+    <%= form.label :content, class: 'block text-sm font-medium text-gray-700' %>
+    <%= form.text_field :content, class: 'mt-1 block w-full shadow-sm rounded-md border-gray-300 focus:ring-blue-500 focus:border-blue-500' %>
+  </div>
+
+  <div class="mb-4 flex items-center">
+    <%= form.check_box :completed, class: 'mr-2' %>
+    <%= form.label :completed, class: 'text-sm text-gray-700' %>
+  </div>
+
+  <div>
+    <%= form.submit 'Update Todo', class: 'bg-blue-500 text-white px-4 py-2 rounded' %>
+  </div>
+<% end %>
