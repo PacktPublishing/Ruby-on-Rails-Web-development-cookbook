@@ -1,0 +1,10 @@
+<div class="container mx-auto mt-8">
+  <h2 class="text-xl font-bold mb-4">New Project</h2>
+  <%= form_with model: @project, local: true do |f| %>
+    <div class="mb-4">
+      <%= f.label :name, class: "block text-gray-700 mb-1" %>
+      <%= f.text_field :name, class: "border rounded w-full px-3 py-2" %>
+    </div>
+    <%= f.submit "Create Project", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+  <% end %>
+</div>

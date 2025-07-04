@@ -1,0 +1,67 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl mb-5">Sign up</h1>
+
+  <% if @user.errors.any? %>
+    <div class="mb-5">
+      <ul class="bg-red-50 text-red-500 p-3 rounded-lg">
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with model: @user, local: true, class: "contents", data: { turbo: false } do |form| %>
+    <div class="my-5">
+      <%= form.text_field :subdomain,
+                      required: true,
+                      autofocus: true,
+                      autocomplete: "subdomain",
+                      placeholder: "Enter your subdomain",
+                      class:
+                        "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="my-5">
+      <%= form.email_field :email_address,
+                       required: true,
+                       autofocus: true,
+                       autocomplete: "username",
+                       placeholder: "Enter your email address",
+                       class:
+                         "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="my-5">
+      <%= form.password_field :password,
+                          required: true,
+                          autocomplete: "new-password",
+                          placeholder: "Enter your password",
+                          maxlength: 72,
+                          class:
+                            "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="my-5">
+      <%= form.password_field :password_confirmation,
+                          required: true,
+                          autocomplete: "new-password",
+                          placeholder: "Confirm your password",
+                          maxlength: 72,
+                          class:
+                            "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="inline">
+      <%= form.submit "Sign up",
+                  class:
+                    "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    </div>
+    <div class="mt-4 text-sm text-gray-500">
+      <%= link_to "Already have an account? Sign in",
+      new_session_path,
+      class: "text-gray-700 underline hover:no-underline" %>
+    </div>
+  <% end %>
+</div>
+

@@ -1,0 +1,26 @@
+<h1 class="text-2xl font-bold mb-4">Todos</h1>
+<table class="min-w-full bg-white border border-gray-200 rounded-lg">
+  <thead class="bg-gray-50">
+    <tr>
+      <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">ID</th>
+      <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Content</th>
+      <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Completed</th>
+      <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Project</th>
+      <th class="px-4 py-2 text-center text-sm font-semibold text-gray-700">Actions</th>
+    </tr>
+  </thead>
+  <tbody class="divide-y divide-gray-200">
+    <% @todos.each do |todo| %>
+      <tr>
+        <td class="px-4 py-2"><%= todo.id %></td>
+        <td class="px-4 py-2"><%= todo.content %></td>
+        <td class="px-4 py-2"><%= todo.completed? ? 'Yes' : 'No' %></td>
+        <td class="px-4 py-2"><%= todo.project.name %></td>
+        <td class="px-4 py-2 text-center">
+          <%= link_to 'Edit', edit_admin_todo_path(todo), class: 'text-blue-600 hover:underline mr-2' %>
+          <%= link_to 'Delete', admin_todo_path(todo), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-600 hover:underline' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
