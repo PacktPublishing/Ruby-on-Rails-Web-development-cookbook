@@ -1,2 +1,33 @@
 <h1>Edit Profile</h1>
 
+<%= form_with model: @user, url: user_path, method: :patch do |f| %>
+  <% debugger %>
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div>
+    <%= f.label :password, "Change password" %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div>
+    <%= f.label :timezone %>
+    <%= f.select :timezone, ActiveSupport::TimeZone.us_zones.map(&:name) %>
+  </div>
+
+  <div>
+    <%= f.label :public, "Profile is public" %>
+    <%= f.check_box :public %>
+  </div>
+
+  <div>
+    <%= f.label :date_of_birth %>
+    <%= f.date_field :date_of_birth %>
+  </div>
+
+  <div>
+    <%= f.submit "Save changes" %>
+  </div>
+<% end %> 
