@@ -1,3 +1,13 @@
-<main>
-  <h1>Hello world!</h1>
-</main>
+<% greeting = "Hola, #{@user}!" %>
+
+<h1><%= greeting %></h1>
+
+<p>Your remaining balance is
+  <%= number_to_currency @balance %></p>
+
+<% content_for :aside do %>
+  <p>Quote of the day:
+    <%= @quote %></p>
+<% end %>
+
+<%= raw @article %>
