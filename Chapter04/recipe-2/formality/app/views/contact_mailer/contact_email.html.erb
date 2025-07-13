@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <h1>New Contact Form Submission</h1>
+  
+  <p><strong>Name:</strong> <%= @name %></p>
+  <p><strong>Email:</strong> <%= @email %></p>
+  <p><strong>Subject:</strong> <%= @subject %></p>
+  
+  <h2>Message:</h2>
+  <p><%= simple_format(@message) %></p>
+  
+  <hr>
+  <p><em>This message was sent from your website's contact form.</em></p>
+</body>
+</html> 

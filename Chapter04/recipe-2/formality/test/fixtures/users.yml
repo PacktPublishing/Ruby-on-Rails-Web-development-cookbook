@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  password_digest: MyString
+  timezone: MyString
+  public: false
+  date_of_birth: 2025-07-13
+
+two:
+  email: MyString
+  password_digest: MyString
+  timezone: MyString
+  public: false
+  date_of_birth: 2025-07-13
