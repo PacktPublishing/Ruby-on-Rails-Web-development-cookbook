@@ -10,4 +10,4 @@
     <%= @quote %></p>
 <% end %>
 
-<%= raw @article %>
+<%= markdown_to_html(@article).html_safe %>

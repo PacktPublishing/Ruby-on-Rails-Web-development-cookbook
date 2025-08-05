@@ -4,7 +4,7 @@ class GreetingsController < ApplicationController
     @balance = 42.5
     @quote = "Stay hungry, stay foolish."
 
-    markdown = <<~MARKDOWN
+    @article = <<~MARKDOWN
       # The Beauty of Ruby
       
       **Ruby is a language designed for humans.** Its creator, Yukihiro "Matz" Matsumoto, famously said he wanted a language that made programmers happy. That spirit lives on. Ruby feels more like writing poetry than code. Its syntax flows naturally, making it easy to express ideas clearly and elegantly. You don’t wrestle with Ruby—you dance with it.
@@ -13,8 +13,5 @@ class GreetingsController < ApplicationController
       
       __Underneath its simplicity lies depth.__ Ruby doesn’t force you to think like a machine. It invites you to shape the machine around your thinking. That’s why it continues to attract thoughtful, passionate developers. Ruby may not always be the loudest voice in the room, but its quiet elegance continues to inspire those who value clarity, kindness, and craftsmanship in their work.
     MARKDOWN
-
-    parser = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-    @article = parser.render(markdown)
   end
 end
