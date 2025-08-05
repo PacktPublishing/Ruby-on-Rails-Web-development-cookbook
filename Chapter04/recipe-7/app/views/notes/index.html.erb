@@ -1,0 +1,35 @@
+<div class="notes-container" data-controller="notes">
+  <!-- Sidebar with notes list -->
+  <div class="notes-sidebar">
+    <div class="sidebar-header">
+      <h1>Notes</h1>
+      <button class="new-note-btn" data-action="click->notes#newNote">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="notes-list" id="notes-list">
+      <% @notes.each do |note| %>
+        <%= render 'note', note: note %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Main content area -->
+  <div class="notes-content">
+    <div class="content-header">
+      <h2>Notes</h2>
+      <p>Create and manage your notes</p>
+    </div>
+    
+    <div class="note-content-area" id="note-content">
+      <%= render 'welcome' %>
+    </div>
+    
+    <div class="new-note-section" id="new-note-form">
+      <%= render 'form', note: @note %>
+    </div>
+  </div>
+</div>

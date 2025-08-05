@@ -1,0 +1,20 @@
+<header>
+  <h1>Notes</h1>
+</header>
+
+<main>
+  <% @notes.each do |note| %>
+    <%= link_to note_path(note) do %>
+      <h3><%= note.title %></h3>
+      <p><%= note.preview %></p>
+      <small><%= time_ago_in_words(note.updated_at) %> ago</small>
+    <% end %>
+  <% end %>
+  
+  <% if @notes.empty? %>
+    <div class="empty">
+      <h2>No notes yet</h2>
+      <p>Your notes will appear here</p>
+    </div>
+  <% end %>
+</main>

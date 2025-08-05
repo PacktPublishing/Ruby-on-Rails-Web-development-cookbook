@@ -1,0 +1,112 @@
+<% content_for :title, "Tech Gazette - Latest Technology News and Reviews" %>
+<% content_for :description, "Stay updated with the latest technology news, reviews, and insights. Covering AI, smartphones, laptops, VR/AR, and more from top tech experts." %>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <% if @featured_article %>
+    <!-- Featured Article -->
+    <section class="mb-12">
+      <div class="relative">
+        <%= link_to article_path(@featured_article), class: "block group" do %>
+          <div class="relative aspect-video rounded-lg overflow-hidden mb-4"
+               style="background: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);">
+            <% if @featured_article.image_url.present? %>
+              <img src="<%= @featured_article.image_url %>" alt="<%= @featured_article.title %>" 
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                   onload="this.parentElement.style.background='none';"
+                   onerror="this.style.display='none';">
+            <% end %>
+            
+            <!-- Always show gradient fallback with TG logo if no image or image fails -->
+            <% unless @featured_article.image_url.present? %>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-white text-6xl font-bold opacity-20">TG</span>
+              </div>
+            <% else %>
+              <div class="absolute inset-0 flex items-center justify-center" style="display: none;">
+                <span class="text-white text-6xl font-bold opacity-20">TG</span>
+              </div>
+            <% end %>
+            
+            <!-- Text overlay with semi-transparent background -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-lg flex items-end p-8">
+              <div class="text-white">
+                <% if @featured_article.category.present? %>
+                  <span class="inline-block bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium mb-3">
+                    <%= @featured_article.category %>
+                  </span>
+                <% end %>
+                <h1 class="text-4xl font-bold mb-3 group-hover:text-purple-200 transition-colors">
+                  <%= @featured_article.title %>
+                </h1>
+                <p class="text-lg mb-3 opacity-90">
+                  <%= @featured_article.excerpt(200) %>
+                </p>
+                <div class="flex items-center text-sm opacity-75">
+                  <span>By <%= @featured_article.author %></span>
+                  <span class="mx-2">•</span>
+                  <span><%= time_ago_in_words(@featured_article.published_at) %> ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+
+  <!-- Recent Articles Grid -->
+  <section>
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-3xl font-bold text-gray-900">Latest Stories</h2>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <% @recent_articles.each do |article| %>
+        <article class="group">
+          <%= link_to article_path(article), class: "block" do %>
+            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden mb-4">
+              <% if article.image_url.present? %>
+                <img src="<%= article.image_url %>" alt="<%= article.title %>" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <% else %>
+                <div class="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                  <span class="text-gray-600 text-2xl font-bold opacity-50">TG</span>
+                </div>
+              <% end %>
+            </div>
+            
+            <div class="space-y-3">
+              <% if article.category.present? %>
+                <span class="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
+                  <%= article.category %>
+                </span>
+              <% end %>
+              
+              <h3 class="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors line-clamp-2">
+                <%= article.title %>
+              </h3>
+              
+              <p class="text-gray-600 line-clamp-3">
+                <%= article.excerpt %>
+              </p>
+              
+              <div class="flex items-center text-sm text-gray-500">
+                <span>By <%= article.author %></span>
+                <span class="mx-2">•</span>
+                <span><%= time_ago_in_words(article.published_at) %> ago</span>
+              </div>
+            </div>
+          <% end %>
+        </article>
+      <% end %>
+    </div>
+    
+    <% if @recent_articles.empty? && @featured_article.nil? %>
+      <div class="text-center py-16">
+        <div class="text-gray-400 text-6xl mb-4">📰</div>
+        <h3 class="text-2xl font-bold text-gray-600 mb-2">No articles yet</h3>
+        <p class="text-gray-500">Check back soon for the latest tech news!</p>
+      </div>
+    <% end %>
+  </section>
+</div>

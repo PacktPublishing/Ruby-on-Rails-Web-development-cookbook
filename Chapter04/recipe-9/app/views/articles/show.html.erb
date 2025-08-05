@@ -1,0 +1,99 @@
+<% content_for :title, @article.title %>
+<% content_for :description, @article.excerpt(160) %>
+<% content_for :og_type, "article" %>
+<% content_for :og_image, @article.image_url if @article.image_url.present? %>
+
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <article>
+    <!-- Breadcrumb -->
+    <nav class="mb-8">
+      <%= link_to "← Back to Latest", root_path, class: "text-purple-600 hover:text-purple-800 font-medium" %>
+    </nav>
+
+    <!-- Article Category -->
+    <% if @article.category.present? %>
+      <div class="mb-4">
+        <span class="inline-block bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium">
+          <%= @article.category %>
+        </span>
+      </div>
+    <% end %>
+
+    <!-- Article Title -->
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+      <%= @article.title %>
+    </h1>
+
+    <!-- Article Meta -->
+    <div class="flex items-center text-gray-600 mb-8 pb-8 border-b border-gray-200">
+      <div class="flex items-center">
+        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-blue-500 rounded-full flex items-center justify-center mr-4">
+          <span class="text-white font-bold text-lg">
+            <%= @article.author.split.map(&:first).join %>
+          </span>
+        </div>
+        <div>
+          <p class="font-semibold text-gray-900">By <%= @article.author %></p>
+          <p class="text-sm">
+            <time datetime="<%= @article.published_at.iso8601 %>">
+              <%= @article.published_at.strftime("%B %d, %Y") %>
+            </time>
+            • <%= time_ago_in_words(@article.published_at) %> ago
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Image -->
+    <% if @article.image_url.present? %>
+      <div class="mb-8">
+        <img src="<%= @article.image_url %>" alt="<%= @article.title %>" 
+             class="w-full h-auto rounded-lg shadow-lg">
+      </div>
+    <% end %>
+
+    <!-- Article Summary -->
+    <% if @article.summary.present? %>
+      <div class="text-xl text-gray-700 leading-relaxed mb-8 font-medium border-l-4 border-purple-500 pl-6 bg-gray-50 py-4 rounded-r-lg">
+        <%= simple_format(@article.summary) %>
+      </div>
+    <% end %>
+
+    <!-- Article Content -->
+    <div class="prose prose-lg max-w-none">
+      <div class="text-gray-800 leading-relaxed">
+        <%= simple_format(@article.content, { class: "mb-4" }, { wrapper_tag: "p" }) %>
+      </div>
+    </div>
+
+    <!-- Article Footer -->
+    <div class="mt-12 pt-8 border-t border-gray-200">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-blue-500 rounded-full flex items-center justify-center mr-4">
+            <span class="text-white font-bold text-xl">
+              <%= @article.author.split.map(&:first).join %>
+            </span>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900 text-lg"><%= @article.author %></h3>
+            <p class="text-gray-600">Tech Reporter</p>
+          </div>
+        </div>
+        
+        <div class="text-right">
+          <p class="text-sm text-gray-500">Published</p>
+          <p class="font-semibold text-gray-900">
+            <%= @article.published_at.strftime("%B %d, %Y") %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Back to Articles -->
+  <div class="mt-12 text-center">
+    <%= link_to "← Back to Latest Stories", root_path, 
+        class: "inline-block bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-colors" %>
+  </div>
+</div>

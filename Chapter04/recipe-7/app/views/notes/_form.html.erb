@@ -1,0 +1,29 @@
+<%= form_with model: note, class: "note-form", data: { turbo_stream: true } do |form| %>
+  <% if note.errors.any? %>
+    <div class="error-messages">
+      <h3><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h3>
+      <ul>
+        <% note.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-input", placeholder: "Note title" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_area :content, class: "form-textarea", placeholder: "Write your note here...", rows: 10 %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit note.new_record? ? "Create Note" : "Update Note", class: "btn btn-primary" %>
+    <% unless note.new_record? %>
+      <%= link_to "Cancel", note_path(note), class: "btn btn-secondary", data: { turbo_stream: true } %>
+    <% end %>
+  </div>
+<% end %> 

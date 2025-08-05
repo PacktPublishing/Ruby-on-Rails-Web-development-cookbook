@@ -1,0 +1,9 @@
+<header>
+  <%= link_to notes_path do %>< Back<% end %>
+</header>
+
+<article>
+  <h1><%= @note.title %></h1>
+  <small><%= time_ago_in_words(@note.updated_at) %> ago</small>
+  <%= simple_format(@note.content) %>
+</article>

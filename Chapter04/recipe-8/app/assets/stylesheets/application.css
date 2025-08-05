@@ -1,0 +1,88 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+/* 404 Error Page Styles */
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.error h1 {
+  font-size: 8rem;
+  font-weight: 900;
+  color: #3b82f6;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 4px 8px rgba(59, 130, 246, 0.2);
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.error p {
+  font-size: 2rem;
+  color: #6b7280;
+  margin: 1.5rem 0 3rem 0;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.error a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transform: translateY(0);
+}
+
+.error a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+}
+
+.error a:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .error h1 {
+    font-size: 6rem;
+  }
+  
+  .error p {
+    font-size: 1.5rem;
+    margin: 1rem 0 2rem 0;
+  }
+  
+  .error a {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
