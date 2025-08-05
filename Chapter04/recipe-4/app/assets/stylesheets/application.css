@@ -1,0 +1,78 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+body {
+  font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background: #f5f6fa;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-container {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fafbfc;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 2rem 3rem;
+  margin: 3rem auto;
+  max-width: 400px;
+}
+.dashboard-container h1,
+.dashboard-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #222;
+  font-weight: 600;
+}
+.dashboard-container p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0;
+}
+
+.dashboard-container form {
+  width: 100%;
+}
+.dashboard-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+.dashboard-container input[type="text"], .dashboard-container input[type="email"], .dashboard-container input[type="password"] {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+.dashboard-container input[type="submit"] {
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  border: none;
+  background: #222;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.dashboard-container input[type="submit"]:hover {
+  background: #444;
+}
