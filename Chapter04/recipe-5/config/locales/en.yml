@@ -1,0 +1,50 @@
+# Files in the config/locales directory are used for internationalization and
+# are automatically loaded by Rails. If you want to use locales other than
+# English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more about the API, please read the Rails Internationalization guide
+# at https://guides.rubyonrails.org/i18n.html.
+#
+# Be aware that YAML interprets the following case-insensitive strings as
+# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
+# must be quoted to be interpreted as strings. For example:
+#
+#     en:
+#       "yes": yup
+#       enabled: "ON"
+
+en:
+  hello: "Hello world"
+
+  activerecord:
+    models:
+      speaker_proposal: "Talk Proposal"
+    attributes:
+      speaker_proposal:
+        talk_title: "Title"
+        talk_description: "Synopsis"
+        terms_of_participation: "Code of Conduct"
+    errors:
+      models:
+        speaker_proposal:
+          attributes:
+            email:
+              taken: "has already been registered for this conference"
+            duration:
+              not_an_integer: "must be a whole number of minutes"
+          # generic fallback for all 'blank' errors on this model
+          blank: "is required for submission"

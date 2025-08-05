@@ -1,0 +1,80 @@
+<h1>Submit Your Talk Proposal</h1>
+
+<% if @speaker_proposal.errors.any? %>
+  <div class="error-summary">
+    <h2><%= pluralize(@speaker_proposal.errors.count, "error") %>
+      prohibited this proposal from being saved:</h2>
+
+    <% @speaker_proposal.errors[:base].each do |base_msg| %>
+      <p class="base-error"><%= base_msg %></p>
+    <% end %>
+
+    <ul>
+      <% @speaker_proposal.errors.except(:base).full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @speaker_proposal, local: true do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :talk_title %>
+    <%= f.text_field :talk_title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :talk_description %>
+    <%= f.text_area :talk_description, class: "form-control", rows: 5 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :track %>
+    <%= f.select :track,
+             options_for_select(SpeakerProposal::TRACKS, @speaker_proposal.track),
+             {},
+             class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :audience_level %>
+    <%= f.select :audience_level,
+             options_for_select(
+               SpeakerProposal::AUDIENCE_LEVELS,
+               @speaker_proposal.audience_level,
+             ),
+             {},
+             class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :bio %>
+    <%= f.text_area :bio, class: "form-control", rows: 3 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :duration %>
+    <%= f.number_field :duration, class: "form-control", min: 1, max: 180 %>
+  </div>
+
+  <div class="form-group checkbox">
+    <%= f.check_box :terms_of_participation %>
+    <%= f.label :terms_of_participation, "I agree to the terms of participation" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit Proposal", class: "btn" %>
+  </div>
+<% end %>
+
