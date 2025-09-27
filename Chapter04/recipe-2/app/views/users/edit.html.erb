@@ -1,7 +1,6 @@
 <h1>Edit Profile</h1>
 
 <%= form_with model: @user, url: user_path, method: :patch do |f| %>
-  <% debugger %>
   <div>
     <%= f.label :email %>
     <%= f.email_field :email, autocomplete: "email" %>
@@ -14,7 +13,7 @@
 
   <div>
     <%= f.label :timezone %>
-    <%= f.select :timezone, ActiveSupport::TimeZone.us_zones.map(&:name) %>
+    <%= f.time_zone_select :timezone, nil %>
   </div>
 
   <div>
