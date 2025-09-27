@@ -1,0 +1,27 @@
+<div class="lists-page">
+  <div class="header-section">
+    <h1>Task Lists</h1>
+    <p>Organize your tasks into lists</p>
+  </div>
+
+  <div class="lists-grid">
+    <% if @lists.any? %>
+      <% @lists.each do |list| %>
+        <div class="list-card">
+          <%= link_to list_path(list) do %>
+            <h3><%= list.name %></h3>
+            <p><%= list.description %></p>
+            <div class="task-count">
+              <%= pluralize(list.tasks.count, 'task') %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="empty-state">
+        <h3>No lists yet</h3>
+        <p>Create your first list to start organizing your tasks.</p>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="list-show-page">
+  <div class="list-header">
+    <div class="breadcrumb">
+      <%= link_to "← Back to Lists", lists_path %>
+    </div>
+    <h1><%= @list.name %></h1>
+    <% if @list.description.present? %>
+      <p class="list-description"><%= @list.description %></p>
+    <% end %>
+  </div>
+
+  <div class="tasks-section">
+    <div class="section-header">
+      <h2>Tasks</h2>
+      <div class="task-stats">
+        <span class="stat">3 total</span>
+        <span class="stat">1 completed</span>
+        <span class="stat">2 pending</span>
+      </div>
+    </div>
+
+    <div class="tasks-list">
+      <% @list.tasks.each do |task| %>
+        <div class="task-item completed">
+          <div class="task-checkbox">
+            <input type="checkbox" checked disabled>
+          </div>
+          <div class="task-content">
+            <h3 class="task-title"><%= task.title %></h3>
+            <p class="task-description">Initialize the Rails app with proper models and controllers</p>
+            <div class="task-meta">
+              <span class="due-date completed">Due: Jan 15, 2025</span>
+            </div>
+          </div>
+          <div class="task-actions">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+          </div>
+        </div>
+      <% end %>
+      <!-- Hard-coded sample tasks for layout purposes -->
+      <div class="task-item completed">
+        <div class="task-checkbox">
+          <input type="checkbox" checked disabled>
+        </div>
+        <div class="task-content">
+          <h3 class="task-title">Set up Rails project structure</h3>
+          <p class="task-description">Initialize the Rails app with proper models and controllers</p>
+          <div class="task-meta">
+            <span class="due-date completed">Due: Jan 15, 2025</span>
+          </div>
+        </div>
+        <div class="task-actions">
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
+        </div>
+      </div>
+
+      <div class="task-item">
+        <div class="task-checkbox">
+          <input type="checkbox" disabled>
+        </div>
+        <div class="task-content">
+          <h3 class="task-title">Implement user authentication</h3>
+          <p class="task-description">Add login and registration functionality using Devise</p>
+          <div class="task-meta">
+            <span class="due-date upcoming">Due: Jan 20, 2025</span>
+          </div>
+        </div>
+        <div class="task-actions">
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
+        </div>
+      </div>
+
+      <div class="task-item">
+        <div class="task-checkbox">
+          <input type="checkbox" disabled>
+        </div>
+        <div class="task-content">
+          <h3 class="task-title">Design responsive UI components</h3>
+          <p class="task-description">Create reusable components with Tailwind CSS for all major pages</p>
+          <div class="task-meta">
+            <span class="due-date overdue">Due: Jan 10, 2025</span>
+          </div>
+        </div>
+        <div class="task-actions">
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="add-task-section">
+      <button class="add-task-btn">+ Add New Task</button>
+    </div>
+  </div>
+</div>

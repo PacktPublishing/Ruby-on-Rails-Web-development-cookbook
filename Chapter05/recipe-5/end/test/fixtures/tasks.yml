@@ -1,0 +1,36 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+buy_milk:
+  list: groceries
+  title: Buy milk
+  completed: true
+
+buy_eggs:
+  list: groceries
+  title: Buy eggs
+  completed: true
+
+buy_flour:
+  list: groceries
+  title: Buy flour
+  completed: false
+
+file_expense:
+  list: work
+  title: File expense report
+  completed: true
+
+book_flights:
+  list: work
+  title: Book flights
+  completed: false
+
+prepare_deck:
+  list: work
+  title: Prepare deck
+  completed: false
+
+email_client:
+  list: work
+  title: Email client
+  completed: false

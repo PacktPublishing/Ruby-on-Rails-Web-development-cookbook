@@ -1,0 +1,79 @@
+<div class="list-show-page">
+  <div class="list-header">
+    <div class="breadcrumb">
+      <%= link_to "← Back to Lists", lists_path %>
+    </div>
+    <h1><%= @list.name %></h1>
+    <% if @list.description.present? %>
+      <p class="list-description"><%= @list.description %></p>
+    <% end %>
+  </div>
+
+  <div class="tasks-section">
+    <div class="section-header">
+      <h2>Tasks</h2>
+      <div class="task-stats">
+        <% progress = @list.progress %>
+        <span class="stat"><%= progress[:total] %> total</span>
+        <span class="stat"><%= progress[:completed] %> completed</span>
+        <span class="stat"><%= progress[:remaining] %> pending</span>
+      </div>
+    </div>
+
+    <div class="tasks-list">
+      <% @list.tasks.select(&:persisted?).each do |task| %>
+        <div class="task-item <%= 'completed' if task.completed? %>">
+          <div class="task-checkbox">
+            <%= form_with model: [@list, task], url: toggle_completed_list_task_path(@list, task), method: :patch, local: true do |form| %>
+              <%= form.check_box :completed, { checked: task.completed?, onchange: "this.form.submit();" }, "true", "false" %>
+            <% end %>
+          </div>
+          <div class="task-content">
+            <h3 class="task-title"><%= task.title %></h3>
+            <% if task.description.present? %>
+              <p class="task-description"><%= task.description %></p>
+            <% end %>
+            <div class="task-meta">
+              <% if task.due_on.present? %>
+                <span class="due-date <%= 'completed' if task.completed? %> <%= 'overdue' if task.overdue? %>">
+                  Due: <%= task.due_on.to_fs(:long_ordinal) %>
+                </span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="add-task-section">
+      <%= form_with model: [@list, @task || @list.tasks.build], local: true, html: { class: "add-task-form space-y-4" } do |form| %>
+        <% if @task&.errors&.any? %>
+          <div class="error-messages bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-4">
+            <h4 class="font-semibold mb-2">Please fix the following errors:</h4>
+            <ul class="list-disc list-inside space-y-1">
+              <% @task.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="form-field">
+          <%= form.text_field :title, placeholder: "Add a new task...", 
+                              class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" %>
+        </div>
+        <div class="form-field">
+          <%= form.text_area :description, placeholder: "Description (optional)", 
+                             class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-vertical", 
+                             rows: 2 %>
+        </div>
+        <div class="form-field flex items-center space-x-3">
+          <%= form.date_field :due_on, 
+                              class: "px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" %>
+          <%= form.label :due_on, "Due date", class: "text-sm text-gray-600" %>
+        </div>
+        <%= form.submit "Add Task", 
+                        class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/* Lists Page Styles */
+.lists-page {
+  @apply space-y-6;
+}
+
+.header-section {
+  @apply text-center space-y-2;
+}
+
+.header-section h1 {
+  @apply text-3xl font-bold text-gray-900;
+}
+
+.header-section p {
+  @apply text-gray-600;
+}
+
+.lists-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.list-card {
+  @apply bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow;
+}
+
+.list-card a {
+  @apply block p-6 space-y-3;
+}
+
+.list-card h3 {
+  @apply text-lg font-semibold text-gray-900;
+}
+
+.list-card p {
+  @apply text-gray-600 text-sm;
+}
+
+.task-count {
+  @apply text-sm text-blue-600 font-medium;
+}
+
+.empty-state {
+  @apply text-center py-12 space-y-2;
+}
+
+.empty-state h3 {
+  @apply text-lg font-medium text-gray-900;
+}
+
+.empty-state p {
+  @apply text-gray-500;
+}
+
+/* List Show Page Styles */
+.list-show-page {
+  @apply space-y-8;
+}
+
+.list-header {
+  @apply space-y-4;
+}
+
+.breadcrumb a {
+  @apply text-blue-600 hover:text-blue-800;
+}
+
+.list-header h1 {
+  @apply text-3xl font-bold text-gray-900;
+}
+
+.list-description {
+  @apply text-gray-600 text-lg;
+}
+
+.tasks-section {
+  @apply space-y-6;
+}
+
+.section-header {
+  @apply flex justify-between items-center pb-4 border-b;
+}
+
+.section-header h2 {
+  @apply text-xl font-semibold text-gray-900;
+}
+
+.task-stats {
+  @apply flex space-x-4;
+}
+
+.stat {
+  @apply text-sm text-gray-600;
+}
+
+.tasks-list {
+  @apply space-y-4;
+}
+
+.task-item {
+  @apply bg-white rounded-lg border p-4 flex items-start space-x-4 hover:shadow-sm transition-shadow;
+}
+
+.task-item.completed {
+  @apply bg-gray-50 opacity-75;
+}
+
+.task-checkbox {
+  @apply flex-shrink-0 pt-1;
+}
+
+.task-content {
+  @apply flex-1 space-y-2;
+}
+
+.task-title {
+  @apply font-medium text-gray-900;
+}
+
+.task-item.completed .task-title {
+  @apply line-through text-gray-600;
+}
+
+.task-description {
+  @apply text-sm text-gray-600;
+}
+
+.task-meta {
+  @apply flex space-x-4;
+}
+
+.due-date {
+  @apply text-xs px-2 py-1 rounded-full;
+}
+
+.due-date.completed {
+  @apply bg-green-100 text-green-800;
+}
+
+.due-date.upcoming {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.due-date.overdue {
+  @apply bg-red-100 text-red-800;
+}
+
+.task-actions {
+  @apply flex space-x-2;
+}
+
+.edit-btn, .delete-btn {
+  @apply text-sm px-3 py-1 rounded border hover:bg-gray-50 transition-colors;
+}
+
+.edit-btn {
+  @apply text-blue-600 border-blue-200 hover:bg-blue-50;
+}
+
+.delete-btn {
+  @apply text-red-600 border-red-200 hover:bg-red-50;
+}
+
+.add-task-section {
+  @apply pt-4 border-t;
+}
+
+.add-task-btn {
+  @apply w-full py-3 px-4 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors;
+}
