@@ -1,0 +1,28 @@
+<h2>Support Tickets</h2>
+
+<p><%= link_to "✚ New Ticket", new_ticket_path %></p>
+
+<% if @tickets.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tickets.each do |ticket| %>
+        <tr>
+          <td>#<%= ticket.id %></td>
+          <td><%= ticket.title %></td>
+          <td><%= status_badge(ticket.status) %></td>
+          <td><%= link_to "View →", ticket %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p><em>No tickets yet. <a href="<%= new_ticket_path %>">Create the first one!</a></em></p>
+<% end %>

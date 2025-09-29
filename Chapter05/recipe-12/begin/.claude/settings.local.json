@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rails generate model:*)",
+      "Bash(rails generate:*)",
+      "Bash(rails:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

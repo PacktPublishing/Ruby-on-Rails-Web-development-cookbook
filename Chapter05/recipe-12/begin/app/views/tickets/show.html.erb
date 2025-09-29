@@ -1,0 +1,12 @@
+<h2>Ticket #<%= @ticket.id %></h2>
+
+<article>
+  <header>
+    <h3><%= @ticket.title %></h3>
+    <%= status_badge(@ticket.status) %>
+  </header>
+  
+  <p><%= simple_format(@ticket.description) %></p>
+</article>
+
+<p><%= link_to "← Back to Tickets", tickets_path %></p>

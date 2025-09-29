@@ -1,0 +1,30 @@
+<h2>New Ticket</h2>
+
+<%= form_with model: @ticket, local: true do |form| %>
+  <% if @ticket.errors.any? %>
+    <details>
+      <summary><mark><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved</mark></summary>
+      <ul>
+        <% @ticket.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </details>
+  <% end %>
+
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title, required: true %>
+  </p>
+
+  <p>
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 5, required: true %>
+  </p>
+
+  <p>
+    <%= form.submit "Create Ticket" %>
+  </p>
+<% end %>
+
+<p><%= link_to "← Back", tickets_path %></p>
