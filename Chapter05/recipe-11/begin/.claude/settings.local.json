@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bin/rails generate migration:*)",
+      "Bash(bin/rails:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
